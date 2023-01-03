@@ -2,6 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3005;
+const harrowData = require("./data/Harrow.json");
+const heathrowData = require("./data/Heathrow.json");
+const stratfordData = require("./data/Stratford.json");
 
 app.use(express.json());
 app.use(cors());
