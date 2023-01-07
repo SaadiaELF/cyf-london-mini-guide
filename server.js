@@ -11,10 +11,67 @@ app.use(cors());
 
 app.get("/", function (request, response) {
   response.json({
-    "/pharmcies": "retruns an array of pharmacies in a specific area",
-    "/hospitals": "retruns an array of hospitals in a specific area",
-    "/doctors": "retruns an array of doctors in a specific area",
+    "/pharmacies": "returns an array of pharmacies in a specific area",
+    "/hospitals": "returns an array of hospitals in a specific area",
+    "/doctors": "returns an array of doctors in a specific area",
+    "/colleges": "returns an array of colleges in a specific area",
   });
+});
+
+app.get("/:city/pharmacies", function (request, response) {
+  let cityName = request.params.city.toLowerCase();
+  if (cityName === "stratford") {
+    response.send(stratfordData.pharmacies);
+  }
+  if (cityName === "harrow") {
+    response.send(harrowData.pharmacies);
+  }
+  if (cityName === "heathrow") {
+    response.send(heathrowData.pharmacies);
+  }
+  response.sendStatus(404);
+});
+
+app.get("/:city/hospitals", function (request, response) {
+  let cityName = request.params.city.toLowerCase();
+  if (cityName === "stratford") {
+    response.send(stratfordData.hospitals);
+  }
+  if (cityName === "harrow") {
+    response.send(harrowData.hospitals);
+  }
+  if (cityName === "heathrow") {
+    response.send(heathrowData.hospitals);
+  }
+  response.sendStatus(404);
+});
+
+app.get("/:city/doctors", function (request, response) {
+  let cityName = request.params.city.toLowerCase();
+  if (cityName === "stratford") {
+    response.send(stratfordData.doctors);
+  }
+  if (cityName === "harrow") {
+    response.send(harrowData.doctors);
+  }
+  if (cityName === "heathrow") {
+    response.send(heathrowData.doctors);
+  }
+  response.sendStatus(404);
+});
+
+app.get("/:city/colleges", function (request, response) {
+  let cityName = request.params.city.toLowerCase();
+  if (cityName === "stratford") {
+    response.send(stratfordData.colleges);
+  }
+  if (cityName === "harrow") {
+    response.send(harrowData.colleges);
+  }
+  if (cityName === "heathrow") {
+    response.send(heathrowData.colleges);
+  }
+  response.sendStatus(404);
 });
 
 app.listen(PORT, function () {
