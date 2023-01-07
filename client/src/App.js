@@ -59,10 +59,12 @@ function App() {
       <h2>Data</h2>
       <table>
         <thead>
-          <th>Name</th>
-          <th>Website</th>
-          <th>Phone</th>
-          <th>Address</th>
+          <tr>
+            <th>Name</th>
+            <th>Website</th>
+            <th>Phone</th>
+            <th>Address</th>
+          </tr>
         </thead>
         <tbody>
           {cityData &&
