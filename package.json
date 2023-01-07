@@ -4,24 +4,28 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "dev": "nodemon server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SaadiaELF/cyf-london-mini-guide.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/SaadiaELF/cyf-london-mini-guide/issues"
-  },
-  "homepage": "https://github.com/SaadiaELF/cyf-london-mini-guide#readme",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "nodemon": "^2.0.20"
+      "start": "node server.js",
+      "build": "cd client && npm install && npm run build",
+      "server": "nodemon server.js",
+      "dev": "concurrently \"npm run server\" \"npm run client\"",
+      "client": "npm start --prefix client"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/SaadiaELF/cyf-london-mini-guide.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/SaadiaELF/cyf-london-mini-guide/issues"
+    },
+    "homepage": "https://github.com/SaadiaELF/cyf-london-mini-guide#readme",
+    "dependencies": {
+      "concurrently": "^7.6.0",
+      "cors": "^2.8.5",
+      "express": "^4.18.2",
+      "nodemon": "^2.0.20",
+      "url": "^0.11.0"
+    }
   }
-}
