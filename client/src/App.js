@@ -8,6 +8,7 @@ import {
   Alert,
   Button,
   ButtonGroup,
+  Spinner,
   Table,
 } from "reactstrap";
 import "./App.css";
@@ -17,7 +18,6 @@ function App() {
   const [category, setCategory] = useState(null);
   const [cityData, setCityData] = useState([]);
   const [showMessage, setShowMessage] = useState(false);
-  // const [selected, setSelected] = useState(null);
 
   useEffect(() => {
     city &&
@@ -105,6 +105,14 @@ function App() {
           </Button>
         </ButtonGroup>
       </div>
+      {!cityData &&
+        cityData.length <
+          0(
+            <Spinner className="m-5" color="primary">
+              Loading...
+            </Spinner>
+          )}
+
       {category && (
         <Table bordered responsive className="table m-auto mt-4" size="sm">
           <thead>
