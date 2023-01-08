@@ -33,8 +33,8 @@ app.get("/:city/:category", function (request, response) {
       }
       response.status(404).send("Category not found");
     }
-    response.status(404).send("City not found");
   });
+  response.status(404).send("City not found");
 });
 
 app.listen(PORT, function () {
