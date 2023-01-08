@@ -1,6 +1,5 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import stratfordData from "./Stratford.json";
 
 function App() {
   const [city, setCity] = useState("harrow");
