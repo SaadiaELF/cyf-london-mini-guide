@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Alert, Button, ButtonGroup } from "reactstrap";
+import {
+  FormGroup,
+  Input,
+  Label,
+  Col,
+  Alert,
+  Button,
+  ButtonGroup,
+  Table,
+} from "reactstrap";
 import "./App.css";
 
 function App() {
@@ -20,6 +29,7 @@ function App() {
 
   function selectCity(e) {
     setShowMessage(false);
+    setCategory(null);
     setCity(e.target.value.toLowerCase());
   }
 
@@ -35,14 +45,20 @@ function App() {
 
   return (
     <div className="App text-center">
-      <h1>London City Guide</h1>
-      <label htmlFor="cities">Choose a city:</label>
-      <select id="cities" name="cities" onChange={selectCity}>
-        <option value="-1">Select a city</option>
-        <option value="stratford">Stratford</option>
-        <option value="heathrow">Heathrow</option>
-        <option value="harrow">Harrow</option>
-      </select>
+      <h1 className="m-5">London City Guide</h1>
+      <FormGroup className="form-group m-auto" row>
+        <Label for="cities" sm={5}>
+          Select a city
+        </Label>
+        <Col sm={7}>
+          <Input id="cities" name="cities" type="select" onChange={selectCity}>
+            <option value="-1">Select a city</option>
+            <option value="stratford">Stratford</option>
+            <option value="heathrow">Heathrow</option>
+            <option value="harrow">Harrow</option>
+          </Input>
+        </Col>
+      </FormGroup>
 
       {showMessage && (
         <Alert className="m-5 text-center" color="danger">
@@ -89,31 +105,32 @@ function App() {
           </Button>
         </ButtonGroup>
       </div>
-      <h2>Data</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Website</th>
-            <th>Phone</th>
-            <th>Address</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cityData &&
-            cityData.length > 0 &&
-            cityData.map((item, i) => {
-              return (
-                <tr key={i}>
-                  <td>{item.name}</td>
-                  <td>{item.website}</td>
-                  <td>{item.phone}</td>
-                  <td>{item.address}</td>
-                </tr>
-              );
-            })}
-        </tbody>
-      </table>
+      {category && (
+        <Table bordered responsive className="table m-auto mt-4" size="sm">
+          <thead>
+            <tr className="table-primary">
+              <th>Name</th>
+              <th>Website</th>
+              <th>Phone</th>
+              <th>Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cityData &&
+              cityData.length > 0 &&
+              cityData.map((item, i) => {
+                return (
+                  <tr key={i}>
+                    <td>{item.name}</td>
+                    <td>{item.website}</td>
+                    <td>{item.phone}</td>
+                    <td>{item.address}</td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </Table>
+      )}
     </div>
   );
 }
