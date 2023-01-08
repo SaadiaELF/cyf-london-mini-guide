@@ -1,11 +1,14 @@
-import "./App.css";
 import React, { useEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Alert, Button, ButtonGroup } from "reactstrap";
+import "./App.css";
 
 function App() {
   const [city, setCity] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(null);
   const [cityData, setCityData] = useState([]);
   const [showMessage, setShowMessage] = useState(false);
+  // const [selected, setSelected] = useState(null);
 
   useEffect(() => {
     city &&
@@ -31,7 +34,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App text-center">
       <h1>London City Guide</h1>
       <label htmlFor="cities">Choose a city:</label>
       <select id="cities" name="cities" onChange={selectCity}>
@@ -40,20 +43,51 @@ function App() {
         <option value="heathrow">Heathrow</option>
         <option value="harrow">Harrow</option>
       </select>
-      {showMessage && <div>Please select a city first</div>}
+
+      {showMessage && (
+        <Alert className="m-5 text-center" color="danger">
+          You need to select a city first
+        </Alert>
+      )}
       <div>
-        <button type="button" value="pharmacies" onClick={selectCategory}>
-          Pharmacies
-        </button>
-        <button type="button" value="doctors" onClick={selectCategory}>
-          Doctors
-        </button>
-        <button type="button" value="hospitals" onClick={selectCategory}>
-          Hospitals
-        </button>
-        <button type="button" value="colleges" onClick={selectCategory}>
-          Colleges
-        </button>
+        <ButtonGroup>
+          <Button
+            color="primary"
+            outline
+            value="pharmacies"
+            onClick={selectCategory}
+            active={category === "pharmacies"}
+          >
+            Pharmacies
+          </Button>
+          <Button
+            color="primary"
+            outline
+            value="doctors"
+            onClick={selectCategory}
+            active={category === "doctors"}
+          >
+            Doctors
+          </Button>
+          <Button
+            color="primary"
+            outline
+            value="hospitals"
+            onClick={selectCategory}
+            active={category === "hospitals"}
+          >
+            Hospitals
+          </Button>
+          <Button
+            color="primary"
+            outline
+            value="colleges"
+            onClick={selectCategory}
+            active={category === "colleges"}
+          >
+            Colleges
+          </Button>
+        </ButtonGroup>
       </div>
       <h2>Data</h2>
       <table>
